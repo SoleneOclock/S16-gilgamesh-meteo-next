@@ -1,4 +1,6 @@
+import Link from "next/link";
 import FavBtn from "./FavBtn";
+import { fetchWeatherData } from "@/app/api/api";
 
 interface ICityProps {
 	city: string;
@@ -20,15 +22,15 @@ export default async function MeteoWidget({ city }: ICityProps) {
 	// ici le render il est coté serveur, il peut etre asynchrone, on peut faire direct le call API et remplir le JSX avec les données dès le premier render
 
 	// on a placé la clé API dans un fichier non commité qui reste en local le .env.local, next place sa valeur dans process.env
-	const API_KEY = process.env.API_KEY;
-	const response = await fetch(
-		`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`,
-	);
-	const weatherData = (await response.json()) as WeatherData;
+	const weatherData = await fetchWeatherData(city);
 
 	return (
-		<div className="relative bg-blue-200 p-4 flex rounded-lg text-cyan-950 w-full sm:w-32  ">
+		<Link
+			href={`/city/${city}`}
+			className="relative bg-blue-200 p-4 flex rounded-lg text-cyan-950 w-full sm:w-32  "
+		>
 			<img
+				alt="meteo-icon"
 				src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`}
 			/>
 			<div>
@@ -37,6 +39,6 @@ export default async function MeteoWidget({ city }: ICityProps) {
 			</div>
 
 			<FavBtn />
-		</div>
+		</Link>
 	);
 }
