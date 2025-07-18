@@ -27,7 +27,7 @@ export default async function MeteoWidget({ city }: ICityProps) {
 	return (
 		<Link
 			href={`/city/${city}`}
-			className="relative bg-blue-200 p-4 flex rounded-lg text-cyan-950 w-full sm:w-32  "
+			className="relative bg-blue-200 p-4 flex rounded-lg text-cyan-950 w-full w-full  "
 		>
 			<img
 				alt="meteo-icon"
