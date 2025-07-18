@@ -13,7 +13,7 @@ export default function MeteoWidget({ city }: ICityProps) {
 	// ici le render il est coté serveur, il peut etre asynchrone, on peut faire direct le call API et remplir le JSX avec les données dès le premier render
 
 	return (
-		<div>
+		<div className="bg-blue-200 p-4 rounded-lg text-cyan-950 w-full sm:w-32  ">
 			<h2>{city}</h2>
 			<div>23°C</div>
 		</div>

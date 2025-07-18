@@ -14,10 +14,12 @@ export default function RootLayout({
 	return (
 		<html lang="fr">
 			<body>
-				<header>
-					<nav>home - contact</nav>
-				</header>
-				{children}
+				<div className="bg-linear-to-t from-sky-500 to-indigo-500 h-screen">
+					<header className="bg-sky-600 p-4">
+						<nav>home - contact</nav>
+					</header>
+					{children}
+				</div>
 			</body>
 		</html>
 	);
